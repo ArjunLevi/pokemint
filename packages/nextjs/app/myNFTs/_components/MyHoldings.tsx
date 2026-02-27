@@ -86,7 +86,12 @@ export const MyHoldings = () => {
           <div className="text-2xl text-primary-content">No NFTs found</div>
         </div>
       ) : (
-        <div className="flex flex-wrap gap-4 my-8 px-5 justify-center">
+        /* grid: Enables CSS Grid
+         grid-cols-2: Default 2 columns for mobile
+         gap-2: Smaller gap for tight mobile view
+         sm:grid-cols-3 lg:grid-cols-4: Restores your desktop multi-column layout
+      */
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 my-8 px-2 md:px-5 justify-items-center">
           {myAllCollectibles.map(item => (
             <NFTCard nft={item} key={item.id} />
           ))}
