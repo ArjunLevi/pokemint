@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { RocketLaunchIcon, SparklesIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
 
 const Home: NextPage = () => {
@@ -13,81 +12,60 @@ const Home: NextPage = () => {
   return (
     <>
       <div className="flex items-center flex-col grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
-            <span className="block text-xl font-bold">(SpeedRunEthereum Challenge: Tokenization extension)</span>
-          </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address address={connectedAddress} />
+        {/* Hero Section */}
+        <div className="flex-grow flex flex-col items-center justify-center text-center px-5 w-full max-w-4xl">
+          <div className="relative">
+            {/* Background Glow Effect */}
+            <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-full opacity-50"></div>
+
+            <h1 className="relative">
+              <span className="block text-2xl md:text-3xl mb-2 font-medium">Welcome to</span>
+              <span className="block text-6xl md:text-8xl font-black tracking-tighter text-primary">PokeMint</span>
+            </h1>
           </div>
 
-          <div className="flex items-center flex-col flex-grow mt-4">
-            <div className="px-5 w-[90%]">
-              <h1 className="text-center mb-6">
-                <span className="block text-4xl font-bold">Challenge: Tokenization</span>
-              </h1>
-              <div className="flex flex-col items-center justify-center">
-                <Image
-                  src="/hero.png"
-                  width="727"
-                  height="231"
-                  alt="challenge banner"
-                  className="rounded-xl border-4 border-primary"
-                />
-                <div className="max-w-3xl">
-                  <p className="text-center text-lg mt-8">
-                    🎫 Create a unique token to learn the basics of 🏗️ Scaffold-ETH 2. You'll use 👷‍♀️
-                    <a
-                      href="https://hardhat.org/getting-started/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline"
-                    >
-                      HardHat
-                    </a>{" "}
-                    to compile and deploy smart contracts. Then, you'll use a template React app full of important
-                    Ethereum components and hooks. Finally, you'll deploy an NFT to a public network to share with
-                    friends! 🚀
-                  </p>
-                  <p className="text-center text-lg">
-                    🌟 The final deliverable is an app that lets users purchase and transfer NFTs. Deploy your contracts
-                    to a testnet then build and upload your app to a public web server. Submit the url on{" "}
-                    <a href="https://speedrunethereum.com/" target="_blank" rel="noreferrer" className="underline">
-                      SpeedRunEthereum.com
-                    </a>{" "}
-                    !
-                  </p>
-                </div>
+          <p className="mt-6 text-lg md:text-xl opacity-80 max-w-2xl">
+            Discover, mint, and collect unique metallic desert guardians. Build your ultimate squad on the Base network.
+          </p>
+
+          <div className="mt-10 flex flex-col items-center gap-4">
+            <Link
+              href="/myNFTs"
+              className="btn btn-primary btn-lg px-12 rounded-full text-xl shadow-xl hover:scale-105 transition-transform border-2 border-white/10"
+            >
+              <RocketLaunchIcon className="h-6 w-6 mr-2" />
+              Catch your Poke
+            </Link>
+
+            {connectedAddress && (
+              <div className="flex flex-col items-center bg-base-300/50 p-4 rounded-3xl backdrop-blur-sm border border-primary/10">
+                <p className="text-xs uppercase font-bold opacity-50 mb-1">Trainer ID</p>
+                <Address address={connectedAddress} />
               </div>
-            </div>
+            )}
           </div>
         </div>
 
-        <div className="grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col md:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contracts
-                </Link>{" "}
-                tab.
-              </p>
+        {/* Feature Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-10 py-20 w-full max-w-6xl">
+          <div className="bg-base-200 p-8 rounded-3xl border border-primary/5 flex flex-col items-center text-center">
+            <SparklesIcon className="h-12 w-12 text-primary mb-4" />
+            <h3 className="text-xl font-bold">Unique AI Art</h3>
+            <p className="opacity-70">Every guardian is generated with reinforced carbon-fiber detail.</p>
+          </div>
+
+          <div className="bg-base-200 p-8 rounded-3xl border border-primary/5 flex flex-col items-center text-center">
+            <TrophyIcon className="h-12 w-12 text-primary mb-4" />
+            <h3 className="text-xl font-bold">On-Chain Power</h3>
+            <p className="opacity-70">Attributes are stored forever on Base, ready for future battles.</p>
+          </div>
+
+          <div className="bg-base-200 p-8 rounded-3xl border border-primary/5 flex flex-col items-center text-center">
+            <div className="h-12 w-12 flex items-center justify-center bg-primary rounded-full mb-4">
+              <span className="text-white font-bold">B</span>
             </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
+            <h3 className="text-xl font-bold">Base Native</h3>
+            <p className="opacity-70">Lightning fast minting with near-zero gas fees.</p>
           </div>
         </div>
       </div>
