@@ -1,0 +1,17 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjg2Nzg2OSwidHlwZSI6ImF1dGgiLCJrZXkiOiIweEY3YTE5OWYwMTkzNjExNUU2MWU3OWVDZTM4YmVGOGUwMTJFNjE5NDQifQ",
+    "payload": "eyJkb21haW4iOiJwb2tlbW9uLWJhc2UudmVyY2VsLmFwcCJ9",
+    "signature": "rsKCjTFROnZjLNK4EwzPMStMXiVXQpDMj18YX7js7ag+2qZp8JWkhjZwBbZ9No5U1XJjvvBDGqsDF9FsuyyMMhw="
+  },
+  "frame": {
+    "version": "1",
+    "name": "PokeMint",
+    "iconUrl": "https://pokemon-base.vercel.app/walking-character.gif",
+    "homeUrl": "https://pokemon-base.vercel.app/",
+    "imageUrl": "https://pokemon-base.vercel.app/walking-character.gif",
+    "buttonTitle": "Play Destiny War",
+    "splashBackgroundColor": "#000000"
+  }
+}
+
