@@ -10,10 +10,36 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
-export const metadata = getMetadata({
-  title: "Tokenization | SpeedRunEthereum",
-  description: "Built with 🏗 Scaffold-ETH 2",
-});
+export const metadata = {
+  ...getMetadata({
+    title: "PokeMint",
+    description: "Built with Base Network",
+  }),
+  other: {
+    "base:app_id": "6981b2e51672d70694e2940b",
+    // 1. Farcaster Mini App Config
+    "fc:miniapp": JSON.stringify({
+      version: "next",
+      imageUrl: "https://pokemon-base.vercel.app/walking-character.gif",
+      button: {
+        title: "Poke Mint",
+        action: {
+          type: "launch_miniapp",
+          name: "PokeMint App",
+          url: "https://pokemon-base.vercel.app/",
+        },
+      },
+    }),
+    // 2. Standard Frame Tags for Base/Warpcast Preview
+    "fc:frame": "vNext",
+    "fc:frame:image": "https://pokemon-base.vercel.app/walking-character.gif",
+    "fc:frame:image:aspect_ratio": "1:1", // Best for Pokemon cards
+    "og:image": "https://pokemon-base.vercel.app/walking-character.gif",
+
+    "talentapp:project_verification":
+      "794fd39df40d422f1925286ceaae3137b503872860a205ff4083aecea16968dfaec145d9dca633830f2628eda0c2cb6991684de2d31e4a6550888391d1391454",
+  },
+};
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
