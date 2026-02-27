@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { sdk } from "@farcaster/miniapp-sdk";
+import { farcasterMiniApp } from "@farcaster/miniapp-wagmi-connector";
 import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { useTheme } from "next-themes";
 import { Toaster } from "react-hot-toast";
 import { WagmiProvider } from "wagmi";
+import { useConnect } from "wagmi";
 import { Footer } from "~~/components/Footer";
 import { Header } from "~~/components/Header";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
@@ -15,6 +18,22 @@ import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   useInitializeNativeCurrencyPrice();
+  const { connect } = useConnect();
+
+  useEffect(() => {
+    const init = async () => {
+      try {
+        // 1. Signal Farcaster that the app is ready
+        await sdk.actions.ready();
+        // 2. Trigger the connection
+        // We pass the connector function inside the variables object
+        connect({ connector: farcasterMiniApp() });
+      } catch (error) {
+        console.error("Farcaster connection failed", error);
+      }
+    };
+    init();
+  }, [connect]);
 
   return (
     <>
